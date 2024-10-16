@@ -1,18 +1,22 @@
 # 파이프라인을 실행하기 위한 스크립트
 
 모든 실습은 Window 환경에서 진행되었고, 이후 WSL 환경에서 도커 이미지 구축 및 테스트가 진행되었습니다.
+- 참고 링크
+	- [윈도우 WSL에서 Docker 설치하는 방법](https://www.lainyzine.com/ko/article/how-to-install-docker-on-wsl/#google_vignette)
+ 	- [도커 데스크톱 없이 구축하는 WSL2와 도커 개발 환경](https://netmarble.engineering/docker-on-wsl2-without-docker-desktop/)
 
-- docker-install.sh 파일을 통해 도커 설치
+1. Window 환경에서 '[Ubuntu 22.04.2 LTS](https://apps.microsoft.com/store/detail/ubuntu-22042-lts/9PN20MSR04DW?hl=ko-kr&gl=ko)' 다운로드 및 설치
+2. Powershell을 관리자모드로 실행 후, <code>wsl -l -v<code>로 우분투 버전 확인
+	- 만약 버전이 1이라면, <code>wsl --set-default-version Ubuntu-22.04 2<code>로 버전을 바꿔주고, 확인해본다.
+3. Powershell을 관리자모드로 실행해서 <code>wsl -d Ubuntu-22.04<code>로 WSL Ubuntu 셀로 진입
+	- 혹은 설치했던 Ubuntu 앱으로 진입
+4. 아래 명령어를 통해 도커를 설치해준다.
 ```
-sudo sh ./docker-install.sh
+$ curl -fsSL https://get.docker.com -o docker-install.sh
+$ sudo sh ./docker-install.sh
 ```
-- 도커 엔진을 실행
-```
-sudo /etc/init.d/docker start
-```
-```
-systemctl enable docker
-```
+5. <code>sudo docker ps<code>를 입력하여 도커가 정상 작동 중인지 에러가 뜨는지 확인
+	- 에러 발생 시, 상단 참고 링크 통해서 설정을 바꿔주고 리부트 한다. (테스트 당시 바로 정상 작동해서 패스)
 
 ---
 # 데이터 스키마
