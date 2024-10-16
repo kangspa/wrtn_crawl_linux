@@ -6,10 +6,12 @@
 ```
 sudo sh ./docker-install.sh
 ```
-- systemd 활성화를 위해, /etc/wsl.conf 파일에 다음 내용 추가
+- 도커 엔진을 실행
 ```
-[boot]
-systemd=true
+sudo /etc/init.d/docker start
+```
+```
+systemctl enable docker
 ```
 
 ---
