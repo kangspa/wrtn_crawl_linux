@@ -17,7 +17,7 @@ RUN service mysql start && \
     mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');"
 
 # 작업 디렉토리 설정
-WORKDIR ./
+WORKDIR /app
 
 # Poetry 설치
 RUN pip install poetry
