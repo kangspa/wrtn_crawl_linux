@@ -1,5 +1,17 @@
 # 파이프라인을 실행하기 위한 스크립트
 
+모든 실습은 Window 환경에서 진행되었고, 이후 WSL 환경에서 도커 이미지 구축 및 테스트가 진행되었습니다.
+
+- docker-install.sh 파일을 통해 도커 설치
+```
+sudo sh ./docker-install.sh
+```
+- systemd 활성화를 위해, /etc/wsl.conf 파일에 다음 내용 추가
+```
+[boot]
+systemd=true
+```
+
 ---
 # 데이터 스키마
 
