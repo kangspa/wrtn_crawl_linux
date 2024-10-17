@@ -20,7 +20,7 @@ $ curl -fsSL https://get.docker.com -o docker-install.sh
 $ sudo sh ./docker-install.sh
 ```
 5. ```sudo docker ps```를 입력하여 도커가 정상 작동 중인지 에러가 뜨는지 확인
-	- 에러 발생 시, 상단 참고 링크 통해서 설정을 바꿔주고 리부트 한다. (테스트 당시 바로 정상 작동해서 패스)
+	- 에러 발생 시, 하단 참고 링크 통해서 설정을 바꿔주고 리부트 한다. (테스트 당시 바로 정상 작동해서 패스)
 6. ```sudo usermod -aG docker $USER```를 통해 docker 그룹에 사용자 추가
 7. ```sudo chmod 666 /var/run/docker.sock```를 통해 권한 변경
 8. ```sudo apt install docker-compose```를 통해 docker-compose 명령어 사용가능하도록 변경
