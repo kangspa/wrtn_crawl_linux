@@ -15,13 +15,20 @@ from concurrent.futures import ThreadPoolExecutor
 import concurrent.futures
 
 # mysql 연결
-conn = pymysql.connect(
-    host="localhost",
-    port=3306,
-    user="root",
-    password="root",
-    charset='utf8'
-)
+while True:
+    try:
+        conn = pymysql.connect(
+            host="db",
+            port=3306,
+            user="root",
+            password="root",
+            charset='utf8mb4'
+        )
+        print("Connected to MySQL")
+        break
+    except pymysql.MySQLError as e:
+        print("MySQL not ready yet, retrying in 5 seconds...")
+        sleep(5)
 cursor = conn.cursor()
 # wrtn_char 데이터베이스 생성 / 이미 있다면 넘김
 try:
@@ -72,18 +79,27 @@ conn.close()
 # 크롤링 함수 작성 / 카테고리 번호를 입력받아서 해당 번호로 크롤링
 def wrtnCharacterCrawl(cat_num):
     # mysql 연결
-    conn = pymysql.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        password="root",
-        database="wrtn_char",
-        charset='utf8'
-    )
+    while True:
+        try:
+            conn = pymysql.connect(
+                host="db",
+                port=3306,
+                user="root",
+                password="root",
+                database="wrtn_char",
+                charset='utf8mb4'
+            )
+            print("Connected to MySQL")
+            break
+        except pymysql.MySQLError as e:
+            print("MySQL not ready yet, retrying in 5 seconds...")
+            sleep(5)
     cursor = conn.cursor()
             
     options = webdriver.ChromeOptions()
-    # 창 안 띄우는 옵션
+    # 창 안 띄우는 옵션 등 리눅스 환경에서 구동되도록 설정
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--headless')
     # 크롬 다운로드 경로를 현재 경로의 img 폴더 안으로 변경
     prefs = {"download.default_directory": os.path.join(os.getcwd(),"img")}

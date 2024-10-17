@@ -15,13 +15,20 @@ from concurrent.futures import ThreadPoolExecutor
 import concurrent.futures
 
 # mysql 연결
-conn = pymysql.connect(
-    host="localhost",
-    port=3306,
-    user="root",
-    password="root",
-    charset='utf8mb4'
-)
+while True:
+    try:
+        conn = pymysql.connect(
+            host="db",
+            port=3306,
+            user="root",
+            password="root",
+            charset='utf8mb4'
+        )
+        print("Connected to MySQL")
+        break
+    except pymysql.MySQLError as e:
+        print("MySQL not ready yet, retrying in 5 seconds...")
+        sleep(5)
 cursor = conn.cursor()
 # wrtn_char 데이터베이스 생성 / 이미 있다면 넘김
 try:
@@ -72,14 +79,21 @@ conn.close()
 # 크롤링 함수 작성 / 카테고리 번호를 입력받아서 해당 번호로 크롤링
 def wrtnCharacterCrawl(cat_num):
     # mysql 연결
-    conn = pymysql.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        password="root",
-        database="wrtn_char",
-        charset='utf8mb4'
-    )
+    while True:
+        try:
+            conn = pymysql.connect(
+                host="db",
+                port=3306,
+                user="root",
+                password="root",
+                database="wrtn_char",
+                charset='utf8mb4'
+            )
+            print("Connected to MySQL")
+            break
+        except pymysql.MySQLError as e:
+            print("MySQL not ready yet, retrying in 5 seconds...")
+            sleep(5)
     cursor = conn.cursor()
             
     options = webdriver.ChromeOptions()

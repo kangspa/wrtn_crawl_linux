@@ -7,11 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-selenium = "^4.25.0"
 docker = "^7.1.0"
 pandas = "^2.2.3"
+selenium = "^4.25.0"
+ipykernel = "^6.29.5"
 pymysql = "^1.1.1"
-pillow = "^11.0.0"
+python-dotenv = "^1.0.1"
+cryptography = "^43.0.1"
+pillow = "^10.4.0"
 
 
 [tool.poetry.group.dev.dependencies]

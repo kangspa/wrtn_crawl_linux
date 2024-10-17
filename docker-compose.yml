@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0.39
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+
+  crawl:
+    build:
+      context: ${PWD}
+      dockerfile: ${PWD}/Dockerfile
+    depends_on:
+      - db
