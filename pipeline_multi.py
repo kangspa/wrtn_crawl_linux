@@ -221,7 +221,7 @@ def wrtnCharacterCrawl(cat_num):
     
 # 멀티스레드 크롤링 함수
 def thread_crawler(cat_num):
-    with ThreadPoolExecutor(max_workers=24) as executor:
+    with ThreadPoolExecutor(max_workers=8) as executor:
         executor.submit(wrtnCharacterCrawl, cat_num)
 
 if __name__ == "__main__":
@@ -230,7 +230,7 @@ if __name__ == "__main__":
     
     start = time()
     # 멀티프로세스 실행
-    with Pool(processes=8) as pool:
+    with Pool(processes=4) as pool:
         pool.map(thread_crawler, cat_list)
     print("*"*100)
     print(time()-start) #3643.7741239070892

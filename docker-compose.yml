@@ -9,7 +9,7 @@ services:
 
   crawl:
     build:
-      context: ${PWD}
-      dockerfile: ${PWD}/Dockerfile
+      context: .
+      dockerfile: ./Dockerfile
     depends_on:
       - db

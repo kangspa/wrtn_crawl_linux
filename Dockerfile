@@ -27,10 +27,10 @@ COPY install_chromedriver.sh ./
 # 권한 부여 후 설치
 RUN chmod +x install_chromedriver.sh
 
-RUN bash -x ./install_chromedriver.sh
+RUN bash ./install_chromedriver.sh
 
 # 애플리케이션 소스 코드 복사
-COPY . .
+COPY pipeline.py ./
 
 # 애플리케이션 실행
 CMD ["poetry", "run", "python", "pipeline.py"]

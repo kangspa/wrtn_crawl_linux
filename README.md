@@ -2,7 +2,10 @@
 
 모든 실습은 Window 환경에서 진행되었고, 이후 WSL 환경에서 도커 이미지 구축 및 테스트가 진행되었습니다.   
 Window 환경에서 10월16일(수) 'pipeline_multi_at_window.py' 를 통해 크롤링 및 최종 산출물을 만들고, 이후 WSL 환경에서 docker-compose.yml이 작동되도록 하였습니다.   
-WSL 환경에서는 'pipeline_multi.py' 작동이 불안정한 듯 보여, 동작 확인을 위해 'pipeline.py'로 작동하도록 작성되어 있습니다.
+'pipeline_multi.py' 는 멀티프로세스&멀티스레드 로 작동하는 코드이고, 'pipeline.py' 는 멀티프로세스나 멀티스레드 없이 진행되는 코드입니다.   
+WSL 환경에서 멀티프로세스로 진행 시 터미널에 진행 과정이 제대로 나타나지 않아(한번에 여러개씩 보이고 느림), Dockerfile에는 'pipeline.py' 코드로 동작하도록 작성되어 있습니다.   
+
+해당 내용은 docker-compose.yml, Dockerfile과 동일한 위치에 py 파일, 'poetry.lock', 'pyproject.toml', 'install_chromedriver.sh' 가 있다는 가정 하에 진행되었습니다.
 
 ## Docker 구동을 위한 WSL2 환경 구축
 
