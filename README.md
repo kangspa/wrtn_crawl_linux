@@ -5,7 +5,8 @@ Window 환경에서 10월16일(수) 'pipeline_multi_at_window.py' 를 통해 크
 'pipeline_multi.py' 는 멀티프로세스&멀티스레드 로 작동하는 코드이고, 'pipeline.py' 는 멀티프로세스나 멀티스레드 없이 진행되는 코드입니다.   
 WSL 환경에서 멀티프로세스로 진행 시 터미널에 진행 과정이 제대로 나타나지 않아(한번에 여러개씩 보이고 느림), Dockerfile에는 'pipeline.py' 코드로 동작하도록 작성되어 있습니다.   
 
-해당 내용은 docker-compose.yml, Dockerfile과 동일한 위치에 py 파일, 'poetry.lock', 'pyproject.toml', 'install_chromedriver.sh' 가 있다는 가정 하에 진행되었습니다.
+해당 내용은 docker-compose.yml, Dockerfile과 동일한 위치에 py 파일, 'poetry.lock', 'pyproject.toml', 'install_chromedriver.sh' 가 있다는 가정 하에 진행되었습니다.   
+도커 구동에 이상이 없다면, 바로 `도커 컨테이너 실행` 부분부터 진행해도 무관합니다.
 
 ## Docker 구동을 위한 WSL2 환경 구축
 
@@ -65,6 +66,8 @@ chromedriver --version
 ```bash
 docker-compose up --build
 ```
+- 에러가 발생한다면, 권한 부여가 제대로 안된 것
+- `sudo docker-compose up --build` 로 진행하면 된다.
 
 실행 후 에러 발생 시 아래와 같이 컨테이너 완전 종료 및 이미지 제거
 ```bash
